@@ -78,6 +78,7 @@ config.keys = {
 	-- Modo fullscreen
 	{ key = "f", mods = "LEADER", action = wezterm.action.ToggleFullScreen },
 	{ key = "Enter", mods = "CTRL|SHIFT", action = wezterm.action.ToggleFullScreen },
+	{ key = "e", mods = "CMD", action = wezterm.action.QuickSelect },
 	-- { key = "m", mods = "CTRL|SHIFT", action = wezterm.action.TogglePaneZoomState },
 }
 
