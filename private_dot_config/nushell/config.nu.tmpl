@@ -20,6 +20,18 @@
 #
 use ($nu.home-dir | path join "workspace" "src-python-dev-tools" "shell" "nushell") *
 
+$env.config.show_banner = false
+
+$env.config.keybindings ++= [
+    { name: open_finder modifier: control keycode: char_f mode: [emacs, vi_normal, vi_insert]
+        event: { send: executehostcommand cmd: "^open ." } }
+#   # --- Clipboard do sistema ---
+#    { name: "copy-selection" modifier: control_shift keycode: char_c mode: emacs event: { edit: CopySelection } } # Ctrl+Shift+C
+#    { name: "cut-selection"  modifier: control_shift keycode: char_x mode: emacs event: { edit: CutSelection  } } # Ctrl+Shift+X
+#    { name: "paste-system"   modifier: control_shift keycode: char_v mode: emacs event: { edit: Paste } } # Ctrl+Shift+V
+#
+]
+
 # Aliases comuns
 alias ll = ls -l
 alias la = ls -a
@@ -27,11 +39,29 @@ alias la = ls -a
 # -------------------------
 # Git — vida real no dia a dia
 # -------------------------
+alias gs = git status
 alias gpull = git pull
+alias ga = git add .
+alias gcm = git checkout master
 
 # Reset total (cuidado)
-alias grh = git reset --hard
+alias grh = git reset --hard HEAD
 
 # Diferenças
 alias gd = git diff
 alias gds = git diff --staged
+
+# -------------------------
+# Chezmoi - gerenciamento de dotfiles
+# -------------------------
+alias cma = chezmoi apply
+alias cmd = chezmoi diff
+alias cme = chezmoi edit
+alias cmu = chezmoi update
+alias cmcd = chezmoi cd
+alias cml = chezmoi list
+
+
+# --- Zoxide ---
+# zoxide init nushell --hook prompt | save -f ~/.config/nushell/zoxide.nu
+source ~/.zoxide.nu

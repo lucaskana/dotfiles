@@ -1,4 +1,5 @@
 format = """
+$shell\
 $directory\
 $git_branch\
 $git_status\
@@ -15,11 +16,20 @@ $aws\
 $docker_context\
 $jobs\
 $cmd_duration\
+$time\
 $line_break\
-$character"""
+$character
+"""
 
 add_newline = true
 palette = 'nord'
+
+[time]
+disabled = false
+# Use a specific time format (e.g., 24-hour clock)
+time_format = "%F %T" # Example: YYYY-MM-DD HH:MM:SS
+# Apply a style (optional)
+style = "bold purple" 
 
 [directory]
 style = 'bold fg:dark_blue'
@@ -45,6 +55,10 @@ format = '([$all_status$ahead_behind]($style) )'
 
 [fill]
 symbol = ' '
+
+[character]
+success_symbol = '[➜](bold green) '
+error_symbol = '[✗](bold red) '
 
 [python]
 style = 'teal'
@@ -98,9 +112,22 @@ number_threshold = 1
 format = '[$symbol]($style)'
 
 [cmd_duration]
-min_time = 500
-style = 'fg:gray'
-format = '[$duration]($style)'
+min_time = 400
+format = "⏱️  [$duration]($style)"
+style = "yellow bold"
+
+[shell]
+disabled = false
+style = "bold purple"
+format = """[$indicator]($style) """
+# Defina o texto/ícone para cada shell que você usa:
+bash_indicator = "bash "
+zsh_indicator = " zsh"
+fish_indicator = "󰈺 fish"
+powershell_indicator = "pwsh "
+nu_indicator = " nu"
+unknown_indicator = "sh ?"
+
 
 [palettes.nord]
 dark_blue = '#5E81AC'
