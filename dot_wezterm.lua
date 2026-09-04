@@ -36,10 +36,10 @@ config.keys = {
 	{ key = "h", mods = "ALT", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
 	-- Navegar entre panes
-	{ key = "h", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Left") },
-	{ key = "l", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Right") },
-	{ key = "k", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Up") },
-	{ key = "j", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Down") },
+	{ key = "h", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ key = "l", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Right") },
+	{ key = "k", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ key = "j", mods = "CTRL", action = wezterm.action.ActivatePaneDirection("Down") },
 
 	-- Gerenciar abas
 	{ key = "c", mods = "LEADER", action = wezterm.action.SpawnTab("DefaultDomain") },
