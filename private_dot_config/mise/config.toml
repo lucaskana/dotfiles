@@ -1,0 +1,11 @@
+[tools]
+java = "17"
+uv = "latest"
+
+[tasks.kctx]
+description = "Lisa context"
+run = "kubectl config get-contexts"
+
+[tasks.kpods]
+description = "Lisa todos os pods"
+run = "kubectl get pods -A"
