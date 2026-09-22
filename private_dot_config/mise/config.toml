@@ -9,3 +9,12 @@ run = "kubectl config get-contexts"
 [tasks.kpods]
 description = "Lisa todos os pods"
 run = "kubectl get pods -A"
+
+[tasks."dotfiles:sync"]
+description = "Atualiza, adiciona modificações e commita os dotfiles do chezmoi"
+run = """
+chezmoi update
+chezmoi add ~/.config/mise/config.toml
+chezmoi git -- commit -m "update: sincronizando configs do mise"
+"""
+
