@@ -1,5 +1,7 @@
 [tools]
+helm = "latest"
 java = "17"
+kubectl = "latest"
 node = "latest"
 python = "latest"
 uv = "latest"
