@@ -48,6 +48,7 @@ config.keys = {
 	{ key = "p", mods = "LEADER", action = wezterm.action.ActivateTabRelative(-1) },
 
 	-- Copiar / Colar
+	{ key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
 	{ key = "y", mods = "LEADER", action = wezterm.action.CopyTo("Clipboard") },
 	{ key = "p", mods = "LEADER|SHIFT", action = wezterm.action.PasteFrom("Clipboard") },
 
@@ -56,6 +57,8 @@ config.keys = {
 	{ key = "Enter", mods = "CTRL|SHIFT", action = wezterm.action.ToggleFullScreen },
 	{ key = "e", mods = "CMD", action = wezterm.action.QuickSelect },
 	-- { key = "m", mods = "CTRL|SHIFT", action = wezterm.action.TogglePaneZoomState },
+
+	{ key = "/", mods = "LEADER", action = wezterm.action.Search({ CaseInSensitiveString = "" }) },
 }
 
 return config
