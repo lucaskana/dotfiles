@@ -1,0 +1,71 @@
+# config.nu
+#
+# Installed by:
+# version = "0.105.1"
+#
+# This file is used to override default Nushell settings, define
+# (or import) custom commands, or run any other startup tasks.
+# See https://www.nushell.sh/book/configuration.html
+#
+# This file is loaded after env.nu and before login.nu
+#
+# You can open this file in your default editor using:
+# config nu
+#
+# See `help config nu` for more options
+#
+# You can remove these comments if you want or leave
+# them for future reference.
+#
+#
+#use ($nu.home-dir | path join "workspace" "src-automation" "nushell") *
+use ($nu.home-dir | path join "workspace" "plataform-hub" "nushell") *
+
+$env.config.show_banner = false
+
+$env.config.keybindings ++= [
+    { name: open_finder modifier: control keycode: char_f mode: [emacs, vi_normal, vi_insert]
+        event: { send: executehostcommand cmd: "^open ." } }
+#   # --- Clipboard do sistema ---
+#    { name: "copy-selection" modifier: control_shift keycode: char_c mode: emacs event: { edit: CopySelection } } # Ctrl+Shift+C
+#    { name: "cut-selection"  modifier: control_shift keycode: char_x mode: emacs event: { edit: CutSelection  } } # Ctrl+Shift+X
+#    { name: "paste-system"   modifier: control_shift keycode: char_v mode: emacs event: { edit: Paste } } # Ctrl+Shift+V
+#
+]
+
+# Aliases comuns
+alias ll = ls -l
+alias la = ls -a
+
+# -------------------------
+# Git — vida real no dia a dia
+# -------------------------
+alias gs = git status
+alias gpull = git pull
+alias ga = git add .
+alias gcm = git checkout master
+
+# Reset total (cuidado)
+alias grh = git reset --hard HEAD
+
+# Diferenças
+alias gd = git diff
+alias gds = git diff --staged
+
+# -------------------------
+# Chezmoi - gerenciamento de dotfiles
+# -------------------------
+alias cma = chezmoi apply
+alias cmd = chezmoi diff
+alias cme = chezmoi edit
+alias cmu = chezmoi update
+alias cmcd = chezmoi cd
+alias cml = chezmoi list
+
+
+# --- Zoxide ---
+# zoxide init nushell --hook prompt | save -f ~/.config/nushell/zoxide.nu
+source ~/.zoxide.nu
+
+# Atuin Config
+source ~/.local/share/atuin/init.nu
