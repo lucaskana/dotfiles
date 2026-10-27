@@ -4,6 +4,18 @@ argocd = "latest"
 java = "17"
 uv = "latest"
 
+[shell_alias]
+ll = "ls -la"
+
+
+# Git
+gs = "git status"
+ga = "git add ."
+gc = "git commit"
+gp = "git push"
+gl = "git pull"
+glog = "git log --oneline --graph --decorate -20"
+
 [tasks.kctx]
 description = "Lisa context"
 run = "kubectl config get-contexts"
