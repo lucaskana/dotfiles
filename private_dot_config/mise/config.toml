@@ -1,3 +1,6 @@
+[bootstrap.packages]
+"brew:k9s" = { os = ["macos/arm64"] }
+
 [tools]
 argo = "latest"
 argocd = "latest"
@@ -7,7 +10,6 @@ uv = "latest"
 [shell_alias]
 ll = "ls -la"
 
-
 # Git
 gs = "git status"
 ga = "git add ."
@@ -16,6 +18,19 @@ gp = "git push"
 gl = "git pull"
 glog = "git log --oneline --graph --decorate -20"
 
+# Kubernetes
+k = "kubectl"
+kgp = "kubectl get pods -A"
+kgs = "kubectl get svc -A"
+kgd = "kubectl get deploy -A"
+kgn = "kubectl get nodes"
+kctx = "kubectl config current-context"
+
+# ArgoCD
+ac = "argocd"
+acapp = "argocd app list"
+acproj = "argocd proj list"
+
 [tasks.kctx]
 description = "Lisa context"
 run = "kubectl config get-contexts"
@@ -23,3 +38,6 @@ run = "kubectl config get-contexts"
 [tasks.kpods]
 description = "Lisa todos os pods"
 run = "kubectl get pods -A"
+
+[bootstrap.repos]
+"~/workspace/project" = { url = "https://telefonica-vivo-brasil@dev.azure.com/telefonica-vivo-brasil/ECMC%20-%20Ecomm%20Cloud%20B2C/_git/src-sap-commerce-core-customize-java-b2b", ref = "master" }
